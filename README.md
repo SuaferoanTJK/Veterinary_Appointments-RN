@@ -6,10 +6,10 @@ This application was created as a first approach to React Native technology, tes
 
 ## Installation
 To install this project follow the next steps:
-1.  Download the repository found here: [GitHub Repository]([https://github.com/SuaferoanTJK/Veterinary_Appointments-RN))
+1.  Download the repository found here: [GitHub Repository](https://github.com/SuaferoanTJK/Veterinary_Appointments-RN)
 2.  Run **npm install** script
 3.  Run **npx react-native run-android** script to raise the development server.
-4.  Watch the emergent emulator or your android cellphone if the device it is connected to the pc via USB and has developer mode enable.
+4.  Watch the emergent emulator on your pc or your android cellphone (if the device is connected to the pc via USB and has developer mode enable).
 
 ## Screenshots
 <p float="left">
