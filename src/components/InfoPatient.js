@@ -15,7 +15,7 @@ const InfoPatient = ({patient, setPatient, setShowModalPatient}) => {
       <ScrollView>
         <View>
           <Text style={styles.title}>
-            Información <Text style={styles.titleBold}>Paciente</Text>
+            Appointment <Text style={styles.titleBold}>Information</Text>
           </Text>
           <Pressable
             style={styles.btnClose}
@@ -23,32 +23,32 @@ const InfoPatient = ({patient, setPatient, setShowModalPatient}) => {
               setShowModalPatient(false);
               setPatient({});
             }}>
-            <Text style={styles.btnCloseText}>X Cerrar</Text>
+            <Text style={styles.btnCloseText}>X Close</Text>
           </Pressable>
         </View>
         <View style={styles.data}>
           <View style={styles.field}>
-            <Text style={styles.label}>Nombre:</Text>
+            <Text style={styles.label}>Name:</Text>
             <Text style={styles.value}>{patient.name}</Text>
           </View>
           <View style={styles.field}>
-            <Text style={styles.label}>Propietario:</Text>
+            <Text style={styles.label}>Owner:</Text>
             <Text style={styles.value}>{patient.owner}</Text>
           </View>
           <View style={styles.field}>
-            <Text style={styles.label}>Correo:</Text>
+            <Text style={styles.label}>Email:</Text>
             <Text style={styles.value}>{patient.email}</Text>
           </View>
           <View style={styles.field}>
-            <Text style={styles.label}>Celular:</Text>
+            <Text style={styles.label}>Phone:</Text>
             <Text style={styles.value}>{patient.phone}</Text>
           </View>
           <View style={styles.field}>
-            <Text style={styles.label}>Fecha Alta:</Text>
+            <Text style={styles.label}>Discharge Date:</Text>
             <Text style={styles.value}>{formatDate(patient.date)}</Text>
           </View>
           <View style={styles.field}>
-            <Text style={styles.label}>Síntomas:</Text>
+            <Text style={styles.label}>Symptom:</Text>
             <Text style={styles.value}>{patient.symptom}</Text>
           </View>
         </View>

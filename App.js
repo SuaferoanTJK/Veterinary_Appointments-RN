@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -8,6 +8,7 @@ import {
   Alert,
   Modal,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Form from './src/components/Form';
 import Patient from './src/components/Patient';
 import InfoPatient from './src/components/InfoPatient';
@@ -27,12 +28,12 @@ const App = () => {
 
   const deletePatient = id => {
     Alert.alert(
-      '¿Desea eliminar este paciente?',
-      'Un paciente eliminado no se puede recuperar',
+      'Delete appointment?',
+      'Once deleted it is not possible to recover',
       [
-        {text: 'Cancelar'},
+        {text: 'Cancel'},
         {
-          text: 'Confirmar',
+          text: 'Yes, Delete',
           onPress: () => {
             const updatePatients = patients.filter(
               patientFilter => patientFilter.id !== id,
@@ -44,21 +45,44 @@ const App = () => {
     );
   };
 
+  useEffect(() => {
+    const obtainAppointmentsStorage = async () => {
+      try {
+        const appointmentStorage = await AsyncStorage.getItem('appointments');
+        setPatients(appointmentStorage ? JSON.parse(appointmentStorage) : []);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    obtainAppointmentsStorage();
+  }, []);
+
+  useEffect(() => {
+    const saveAppointmentsStorage = async () => {
+      try {
+        await AsyncStorage.setItem('appointments', JSON.stringify(patients));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    saveAppointmentsStorage();
+  }, [patients]);
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
-        Administrador de Citas {''}
-        <Text style={styles.titleBold}>Veterinaria</Text>
+        Veterinary Appointment {''}
+        <Text style={styles.titleBold}>Manager</Text>
       </Text>
       <Pressable
         onPress={() => {
           setModalVisible(true);
         }}
         style={styles.btnNewDate}>
-        <Text style={styles.btnTextNewDate}>Nueva Cita</Text>
+        <Text style={styles.btnTextNewDate}>New Appointment</Text>
       </Pressable>
       {patients.length === 0 ? (
-        <Text style={styles.noPatients}>No hay pacientes aún</Text>
+        <Text style={styles.noPatients}>There are not appointments yet</Text>
       ) : (
         <FlatList
           style={styles.list}
@@ -108,7 +132,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: '#374151',
     fontWeight: '600',
-    paddingHorizontal: 5,
+    paddingHorizontal: 10,
     paddingTop: 45,
   },
   titleBold: {
@@ -119,7 +143,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#6D28D9',
     padding: 15,
     marginVertical: 35,
-    marginHorizontal: 20,
+    marginHorizontal: 30,
     borderRadius: 5,
   },
   btnTextNewDate: {
@@ -133,6 +157,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: '600',
+    marginHorizontal: 20,
   },
   list: {
     marginHorizontal: 30,

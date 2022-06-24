@@ -67,17 +67,17 @@ const Form = ({
     <SafeAreaView style={styles.data}>
       <ScrollView>
         <Text style={styles.title}>
-          {id ? 'Editar' : 'Nueva'} {''}
-          <Text style={styles.titleBold}>Cita</Text>
+          {id ? 'Edit' : 'New'} {''}
+          <Text style={styles.titleBold}>Appointment</Text>
         </Text>
         <Pressable style={styles.btnCancel} onPress={cleanForm}>
-          <Text style={styles.btnCancelText}>X Cancelar</Text>
+          <Text style={styles.btnCancelText}>X Cancel</Text>
         </Pressable>
         <View style={styles.field}>
-          <Text style={styles.label}>Nombre Paciente</Text>
+          <Text style={styles.label}>Pet</Text>
           <TextInput
             style={styles.input}
-            placeholder="Ingresar nombre del paciente"
+            placeholder="Enter pet's name"
             placeholderTextColor={'#666'}
             value={formData.name}
             onChangeText={text => {
@@ -86,10 +86,10 @@ const Form = ({
           />
         </View>
         <View style={styles.field}>
-          <Text style={styles.label}>Nombre Propietario</Text>
+          <Text style={styles.label}>Owner</Text>
           <TextInput
             style={styles.input}
-            placeholder="Ingresar nombre del propietario"
+            placeholder="Enter owner's name"
             placeholderTextColor={'#666'}
             value={formData.owner}
             onChangeText={text => {
@@ -98,10 +98,10 @@ const Form = ({
           />
         </View>
         <View style={styles.field}>
-          <Text style={styles.label}>Correo Propietario</Text>
+          <Text style={styles.label}>Email</Text>
           <TextInput
             style={styles.input}
-            placeholder="Ingresar correo del propietario"
+            placeholder="Enter owner's email"
             placeholderTextColor={'#666'}
             keyboardType="email-address"
             value={formData.email}
@@ -111,10 +111,10 @@ const Form = ({
           />
         </View>
         <View style={styles.field}>
-          <Text style={styles.label}>Celular Propietario</Text>
+          <Text style={styles.label}>Phone</Text>
           <TextInput
             style={styles.input}
-            placeholder="Ingresar celular del propietario"
+            placeholder="Enter owner's phone"
             placeholderTextColor={'#666'}
             keyboardType="phone-pad"
             value={formData.phone}
@@ -125,13 +125,12 @@ const Form = ({
           />
         </View>
         <View style={styles.field}>
-          <Text style={styles.label}>Fecha de Alta</Text>
+          <Text style={styles.label}>Discharge Date</Text>
           <View style={styles.dateContainer}>
             <DatePicker
               date={formData.date}
               mode="datetime"
               androidVariant="nativeAndroid"
-              locale="es"
               onDateChange={date => {
                 setFormData({...formData, date});
               }}
@@ -139,10 +138,10 @@ const Form = ({
           </View>
         </View>
         <View style={styles.field}>
-          <Text style={styles.label}>Sintomas</Text>
+          <Text style={styles.label}>Symptom</Text>
           <TextInput
             style={styles.input}
-            placeholder="Ingresar sintomas de la mascota"
+            placeholder="Enter pet's symptom"
             placeholderTextColor={'#666'}
             multiline={true}
             numberOfLines={4}
@@ -154,7 +153,7 @@ const Form = ({
         </View>
         <Pressable onPress={handleNewDate} style={styles.btnNewDate}>
           <Text style={styles.btnTextNewDate}>
-            {id ? 'Editar' : 'Agregar'} Paciente
+            {id ? 'Edit' : 'Add'} Appointment
           </Text>
         </Pressable>
       </ScrollView>

@@ -28,14 +28,14 @@ const Patient = ({
               setModalVisible(true);
               editPatient(id);
             }}>
-            <Text style={styles.btnText}>Editar</Text>
+            <Text style={styles.btnText}>Edit</Text>
           </Pressable>
           <Pressable
             style={[styles.btns, styles.btnDelete]}
-            onLongPress={() => {
+            onPress={() => {
               deletePatient(id);
             }}>
-            <Text style={styles.btnText}>Eliminar</Text>
+            <Text style={styles.btnText}>Delete</Text>
           </Pressable>
         </View>
       </View>
